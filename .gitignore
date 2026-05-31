@@ -1,0 +1,16 @@
+# Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+*.tfvars
+
+# Ansible
+*.pem
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# OS
+.DS_Store
