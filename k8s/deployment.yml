@@ -5,23 +5,23 @@ metadata:
 spec:
   replicas: 2
   selector:
-    matchLables:
-      name: flask-app
+    matchLabels:
+      app: flask-app
   template:
     metadata:
-      lables:
-        name: flask-app
-    specs:
+      labels:
+        app: flask-app
+    spec:
       containers:
         - name: flask-app
           image: manishthakur2/devops-eks-pipeline:latest
           ports:
             - containerPort: 5000
           livenessProbe:
-          httpGet:
-            path: /health
-            port: 5000
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 5000
+            httpGet:
+              path: /health
+              port: 5000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
