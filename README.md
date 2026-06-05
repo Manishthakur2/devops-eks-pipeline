@@ -79,6 +79,38 @@ Destroy Infrastructure:
 cd terraform
 terraform destroy
 
+## Challenges & Solutions
+
+1. EKS Cluster Creation Failed — Instance Type Restriction
+**Error:** Unable to create EKS cluster using t2.medium on AWS Free Tier  
+**Root Cause:** AWS Free Tier does not support t2.medium for EKS node groups  
+**Solution:** Changed instance type to t3.small in Terraform configuration  
+**Learning:** Always verify AWS Free Tier limitations before defining infrastructure specs
+
+---
+
+2. IAM Role Conflict — Resource Already Exists
+**Error:** IAM roles could not be created because identical roles already existed in AWS  
+**Root Cause:** Previous failed pipeline run had partially created IAM resources  
+**Solution:** Manually deleted conflicting IAM roles via AWS Console, then reran pipeline  
+**Learning:** Terraform state can become inconsistent after partial runs — always verify resource state before rerunning
+
+---
+
+3. Deployment File Name Mismatch
+**Error:** Deploy stage failed — could not find deployment file  
+**Root Cause:** File was named deployment.yml but workflow referenced deployment.yaml  
+**Solution:** Standardized file extension to match workflow configuration  
+**Learning:** File naming consistency is critical in CI/CD pipelines
+
+---
+
+4. DockerHub Authentication Failure
+**Error:** Pipeline could not login to DockerHub during deploy stage  
+**Root Cause:** GitHub Secret was saved as DOCKERHUB_PASSWORD but workflow referenced DOCKERHUB_TOKEN  
+**Solution:** Updated workflow variable name to match the GitHub Secret exactly  
+**Learning:** Secret naming must be identical between GitHub Secrets and workflow references
+
 ## Author
 Manish Thakur
 LinkedIn: https://www.linkedin.com/in/munish-kumar-a64277200/
