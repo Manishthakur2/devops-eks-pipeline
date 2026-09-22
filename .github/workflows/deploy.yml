@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '**.md'  
 
 jobs:
   # Job 1 - Build and Push Docker Image
