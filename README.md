@@ -112,6 +112,6 @@ terraform destroy
 **Learning:** Secret naming must be identical between GitHub Secrets and workflow references
 
 ## Author
-Manish Thakur
+Munish Kumar
 LinkedIn: https://www.linkedin.com/in/munish-kumar-a64277200/
 GitHub: https://github.com/Manishthakur2/devops-eks-pipeline
